@@ -53,22 +53,25 @@ function indicadorColor(){
   
 });
 }
+
 // Función pintar pixel
 function pintarPixel(){
+  let color= $("#indicador-de-color").css("background-color");
   $grillaPixeles.addEventListener("mousedown", pixel);
   //$grillaPixeles.addEventListener("mouseover", continua);
   $grillaPixeles.addEventListener("mouseup", levantarPincel);
   function pixel(e){
-    e.target.style.backgroundColor = "red";
-    if (!$grillaPixeles.addEventListener("mouseup", levantarPincel)) {
-      $grillaPixeles.addEventListener("mouseover", continua);
-    }          
+    //if ($("#indicador-de-color").css("background-color")=="rgba(0, 0, 0, 0)") {alert("Seleccione un color de pincel");}
+    e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");
+    $grillaPixeles.addEventListener("mouseover", continua);          
   }
+
   function continua(e){
-    e.target.style.backgroundColor = "red";     
+    e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");     
   }
+
   function levantarPincel(e){
-    e.target.style.backgroundColor = "trasparent";
+    e.target.style.backgroundColor = "blue";
   }
 }
 
