@@ -74,7 +74,7 @@ function pintarPixel(){
   }
   function detener(e){
     if ($("#indicador-de-color").css("background-color")=="rgba(0, 0, 0, 0)") {
-      //let mensaje = "Seleccione un color de pincel";
+      let mensaje = "Seleccione un color de pincel";
       alert(mensaje);           
     }
     apretado=false; 
