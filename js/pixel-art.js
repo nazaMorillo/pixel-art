@@ -73,6 +73,7 @@ function pintarPixel(){
   function levantarPincel(e){
     e.target.style.backgroundColor = "blue";
   }
+  
 }
 
 // Variable para guardar el elemento 'color-personalizado'
