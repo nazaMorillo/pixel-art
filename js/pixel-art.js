@@ -25,6 +25,7 @@ let $paleta= document.getElementById("paleta");
 let $grillaPixeles=document.getElementById("grilla-pixeles");
 let tamañoGrilla= 1750;
 let $indicadorDeColor;
+let $botonBorrar = document.getElementById("button#borrar");
 
 // Generando paleta de colores
 function paletaColores(){
@@ -80,6 +81,20 @@ function pintarPixel(){
     apretado=false; 
   }
 }
+// Borrar grilla
+function borrarGrilla(){ 
+    $("#borrar").click(function(){
+      $("#grilla-pixeles").children().animate({"background-color":"white"},2000);
+    });
+    
+    
+    //for (let i = 0 ; i 0 < tamañoGrilla; i++) {
+       //grilla.push($grillaPixeles[i]);
+   // }
+  //console.log(grilla);
+  
+  
+}
 
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
@@ -101,7 +116,7 @@ $(document).ready(iniciar());
 function iniciar(){
   paletaColores();
   crearGrilla();
-  indicadorColor()
-  pintarPixel()
-  
+  indicadorColor();
+  pintarPixel();
+  borrarGrilla();    
 }
