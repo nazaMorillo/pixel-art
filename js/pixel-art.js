@@ -56,24 +56,29 @@ function indicadorColor(){
 
 // Función pintar pixel
 function pintarPixel(){
-  let color= $("#indicador-de-color").css("background-color");
-  $grillaPixeles.addEventListener("mousedown", pixel);
-  //$grillaPixeles.addEventListener("mouseover", continua);
-  $grillaPixeles.addEventListener("mouseup", levantarPincel);
-  function pixel(e){
-    //if ($("#indicador-de-color").css("background-color")=="rgba(0, 0, 0, 0)") {alert("Seleccione un color de pincel");}
+  let apretado=false;
+  $grillaPixeles.addEventListener("mousedown", punto);
+  $grillaPixeles.addEventListener("mouseover", linea);
+  $grillaPixeles.addEventListener("mouseup", detener);
+
+  function punto(e){
     e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");
-    $grillaPixeles.addEventListener("mouseover", continua);          
+    apretado=true;
+    $grillaPixeles.addEventListener("mouseover", linea); 
   }
 
-  function continua(e){
-    e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");     
+  function linea(e){
+    if (apretado) {
+      e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");
+    }
   }
-
-  function levantarPincel(e){
-    e.target.style.backgroundColor = "blue";
+  function detener(e){
+    if ($("#indicador-de-color").css("background-color")=="rgba(0, 0, 0, 0)") {
+      //let mensaje = "Seleccione un color de pincel";
+      alert(mensaje);           
+    }
+    apretado=false; 
   }
-  
 }
 
 // Variable para guardar el elemento 'color-personalizado'
@@ -85,7 +90,7 @@ colorPersonalizado.addEventListener('change',
     // Se guarda el color de la rueda en colorActual
     colorActual = colorPersonalizado.value;
     // Completar para que cambie el indicador-de-color al colorActual
-
+    $indicadorDeColor = $("#indicador-de-color").css("background-color", colorActual);
 
   })
 );
