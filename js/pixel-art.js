@@ -25,7 +25,13 @@ let $paleta= document.getElementById("paleta");
 let $grillaPixeles=document.getElementById("grilla-pixeles");
 let tamañoGrilla= 1750;
 let $indicadorDeColor;
-let $botonBorrar = document.getElementById("button#borrar");
+let $botonBorrar;
+let $heroes;
+function cargarElementosDom(){
+
+  $heroes = $("ul.imgs li").children();
+  $botonBorrar = $("button#borrar");
+}
 
 // Generando paleta de colores
 function paletaColores(){
@@ -35,8 +41,6 @@ function paletaColores(){
       div.style.backgroundColor = color;
       div.className = "color-paleta";
       $paleta.appendChild(div);
-    //console.log(nombreColores[i]);
-    //console.log(div);
   }
 }
 // Creando la grilla de pixeles
@@ -85,15 +89,40 @@ function pintarPixel(){
 function borrarGrilla(){ 
     $("#borrar").click(function(){
       $("#grilla-pixeles").children().animate({"background-color":"white"},2000);
-    });
-    
-    
-    //for (let i = 0 ; i 0 < tamañoGrilla; i++) {
-       //grilla.push($grillaPixeles[i]);
-   // }
-  //console.log(grilla);
-  
-  
+    });  
+}
+// Función para cargar super héroe
+function seleccionPersonaje(){  
+  console.log($heroes);
+
+  $heroes.addEventListener("mousedown", buscarHeroe);
+  //buscarHeroe($heroes[0]);
+ function buscarHeroe(e){
+  for(let i=0; i<$heroes.length;i++){
+    let idHero=$($heroes[i]).attr("id");
+    //console.log(idHero);
+    let selecHero= $(e).attr("id");
+
+    if (idHero==selecHero) {
+      console.log(selecHero);
+      cargarSuperheroe(selecHero);
+      console.log("llamar a la función cargarSuperheroes");
+      //cargarSuperheroe(selecHero);
+    }
+  }
+ }
+  //cargarSuperheroes(batman);
+}
+
+// función guardar
+function guardar(){ 
+    $("#guardar").click(function(){
+      let nombre = prompt("¿Desea guardar el archivo?" , "pixel-art");
+      if (nombre != null) {
+        let nombreYExtencion = nombre+".png"
+        guardarPixelArt(nombreYExtencion);
+      }      
+    });  
 }
 
 // Variable para guardar el elemento 'color-personalizado'
@@ -114,9 +143,12 @@ colorPersonalizado.addEventListener('change',
 $(document).ready(iniciar());
 
 function iniciar(){
+  cargarElementosDom();
   paletaColores();
   crearGrilla();
   indicadorColor();
   pintarPixel();
-  borrarGrilla();    
+  borrarGrilla();
+  guardar();
+  //seleccionPersonaje();
 }
