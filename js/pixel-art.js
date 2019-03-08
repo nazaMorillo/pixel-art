@@ -26,10 +26,10 @@ let $grillaPixeles=document.getElementById("grilla-pixeles");
 let tamañoGrilla= 1750;
 let $indicadorDeColor;
 let $botonBorrar;
-let $heroes;
+
 function cargarElementosDom(){
 
-  $heroes = $("ul.imgs li").children();
+  //$$heroes = $("ul.imgs li").children();
   $botonBorrar = $("button#borrar");
 }
 
@@ -93,25 +93,11 @@ function borrarGrilla(){
 }
 // Función para cargar super héroe
 function seleccionPersonaje(){  
-  console.log($heroes);
-
-  $heroes.addEventListener("mousedown", buscarHeroe);
-  //buscarHeroe($heroes[0]);
- function buscarHeroe(e){
-  for(let i=0; i<$heroes.length;i++){
-    let idHero=$($heroes[i]).attr("id");
-    //console.log(idHero);
-    let selecHero= $(e).attr("id");
-
-    if (idHero==selecHero) {
-      console.log(selecHero);
-      cargarSuperheroe(selecHero);
-      console.log("llamar a la función cargarSuperheroes");
-      //cargarSuperheroe(selecHero);
-    }
-  }
- }
-  //cargarSuperheroes(batman);
+  $("ul.imgs li").children("img").click(function(){
+    let idHero =$(this).attr("id");
+    console.log("idHero es "+ typeof idHero+", valor : "+idHero);
+    cargarSuperheroe(idHero);
+  });
 }
 
 // función guardar
@@ -150,5 +136,5 @@ function iniciar(){
   pintarPixel();
   borrarGrilla();
   guardar();
-  //seleccionPersonaje();
+  seleccionPersonaje();
 }
