@@ -95,8 +95,7 @@ function borrarGrilla(){
 function seleccionPersonaje(){  
   $("ul.imgs li").children("img").click(function(){
     let idHero =$(this).attr("id");
-    console.log("idHero es "+ typeof idHero+", valor : "+idHero);
-    cargarSuperheroe(idHero);
+    cargarSuperheroe(window[idHero]);
   });
 }
 
