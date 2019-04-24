@@ -64,7 +64,7 @@ function pintarPixel(){
   let apretado=false;
   $grillaPixeles.addEventListener("mousedown", punto);
   $grillaPixeles.addEventListener("mouseover", linea);
-  $grillaPixeles.addEventListener("mouseup", detener);
+  document.addEventListener("mouseup", detener);
 
   function punto(e){
     e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");

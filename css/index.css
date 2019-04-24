@@ -116,6 +116,7 @@ main {
 #container {
   width: 100%;
   margin: 20px auto;
+  display: flex;
   justify-content: center;
   flex-direction: row-reverse
 
@@ -215,10 +216,10 @@ img {
 @media only screen and (max-width: 375px) {
   #grilla-pixeles {
    width: 320px;
-   height: 179px;
+   /*height: 179px;*/
   }
   div {
-    height: 6px;
+    /*height: 6px;*/
     width: 6px;
     }
     .imgs {
