@@ -45,7 +45,7 @@ function paletaColores(){
 }
 // Creando la grilla de pixeles
 function crearGrilla(){
-  for(let i=0;i<=tamañoGrilla; i++){    
+  for(let i=0;i<=tamañoGrilla; i++){
       let div = document.createElement('div');
       //div.style.backgroundColor = "red";
       $grillaPixeles.appendChild(div);
@@ -55,7 +55,7 @@ function crearGrilla(){
 function indicadorColor(){
   $("#paleta .color-paleta").click(function(){
   $indicadorDeColor = $("#indicador-de-color").css("background-color", $(this).css("background-color"));
-  
+
 });
 }
 
@@ -69,7 +69,7 @@ function pintarPixel(){
   function punto(e){
     e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");
     apretado=true;
-    $grillaPixeles.addEventListener("mouseover", linea); 
+    $grillaPixeles.addEventListener("mouseover", linea);
   }
 
   function linea(e){
@@ -80,19 +80,19 @@ function pintarPixel(){
   function detener(e){
     if ($("#indicador-de-color").css("background-color")=="rgba(0, 0, 0, 0)") {
       let mensaje = "Seleccione un color de pincel";
-      alert(mensaje);           
+      //alert(mensaje);
     }
-    apretado=false; 
+    apretado=false;
   }
 }
 // Borrar grilla
-function borrarGrilla(){ 
+function borrarGrilla(){
     $("#borrar").click(function(){
       $("#grilla-pixeles").children().animate({"background-color":"white"},2000);
-    });  
+    });
 }
 // Función para cargar super héroe
-function seleccionPersonaje(){  
+function seleccionPersonaje(){
   $("ul.imgs li").children("img").click(function(){
     let idHero =$(this).attr("id");
     cargarSuperheroe(window[idHero]);
@@ -100,21 +100,21 @@ function seleccionPersonaje(){
 }
 
 // función guardar
-function guardar(){ 
+function guardar(){
     $("#guardar").click(function(){
       let nombre = prompt("¿Desea guardar el archivo?" , "pixel-art");
       if (nombre != null) {
         let nombreYExtencion = nombre+".png"
         guardarPixelArt(nombreYExtencion);
-      }      
-    });  
+      }
+    });
 }
 
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
 var colorPersonalizado = document.getElementById('color-personalizado');
 
-colorPersonalizado.addEventListener('change', 
+colorPersonalizado.addEventListener('change',
   (function() {
     // Se guarda el color de la rueda en colorActual
     colorActual = colorPersonalizado.value;
