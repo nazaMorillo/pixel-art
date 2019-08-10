@@ -67,6 +67,9 @@ function pintarPixel(){
   document.addEventListener("mouseup", detener);
 
   function punto(e){
+    if ($("#indicador-de-color").css("background-color")=="rgba(0, 0, 0, 0)") {
+      alert("Seleccione un color de pincel");
+    }
     e.target.style.backgroundColor = $("#indicador-de-color").css("background-color");
     apretado=true;
     $grillaPixeles.addEventListener("mouseover", linea);
@@ -78,10 +81,6 @@ function pintarPixel(){
     }
   }
   function detener(e){
-    if ($("#indicador-de-color").css("background-color")=="rgba(0, 0, 0, 0)") {
-      let mensaje = "Seleccione un color de pincel";
-      //alert(mensaje);
-    }
     apretado=false;
   }
 }
